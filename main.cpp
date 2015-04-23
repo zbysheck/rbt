@@ -91,10 +91,12 @@ int main(int argc, char** argv) {
     }
     else {
         cout << "Test 8 failed." << endl;
+        test8->wypisz(0);
+        check8->wypisz(0);
     }
 
     //tests inserting a node which causes an internal-case rotation
-    RedBlack* test9 = RedBlack::genTest9();
+    RedBlack* test9 = RedBlack::genTest9();test9->wypisz(0);
     test9 = test9->insert(new RedBlack(6));
     RedBlack* check9 = RedBlack::genCheck9();
     if(*test9 == *check9) {
@@ -102,6 +104,8 @@ int main(int argc, char** argv) {
     }
     else {
         cout << "Test 9 failed." << endl;
+        test9->wypisz(0);
+        check9->wypisz(0);
     }
 
     //tests building a full tree

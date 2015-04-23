@@ -1,3 +1,4 @@
+#include <iostream>
 #include "RedBlackTree.h"
 
 
@@ -15,18 +16,62 @@ RedBlack::~RedBlack() {
 }
 
 RedBlack* RedBlack::insert(RedBlack* node) {
-    //replace with implementation!
+    if (data>node->data)
+        if (left)
+            left->insert(node);
+        else left=node;
+    else
+        if (right)
+            right->insert(node);
+        else right=node;
+
+    if(left&&left->right&&!left->left&&left->color&& left->right->color) {
+        left = left->rotateLeft();
+        left->color=true;
+        //left = left->rotateRight();
+    }
+
+    if(left&&left->left&&left->left->left&&left->left->color&& left->left->left->color) {
+        //left = left->rotateLeft();
+        left = left->rotateRight();
+    }
+
+
+    if(left&&right&&!color&&left->color&&right->color){
+        color=true;
+        left->color=false;
+        right->color=false;
+    }
+
+    if (trueRoot)
+        color=false;
     return this;
 }
 
 RedBlack* RedBlack::rotateRight() {
-    //replace with implementation!
-    return this;
+    RedBlack* temp = this->left;
+    this->left=temp->right;
+    temp->right=this;
+    if(trueRoot){
+        trueRoot=false;
+        temp->trueRoot=true;
+    }
+    color=true;
+    temp->color=false;
+    return temp;
 }
 
 RedBlack* RedBlack::rotateLeft() {
-    //replace with implementation!
-    return this;
+    RedBlack* temp = this->right;
+    this->right=temp->left;
+    temp->left=this;
+    if(trueRoot){
+        trueRoot=false;
+        temp->trueRoot=true;
+    }
+    temp->color=false;
+    color=true;
+    return temp;
 }
 
 
@@ -238,4 +283,10 @@ RedBlack* RedBlack::genCheck10() {
     root->left->right->color = false;
 
     return root;
+}
+
+void RedBlack::wypisz(int level) {
+    if(left) left->wypisz(level+1);
+    std::cout << "\nkolor: " << color << " level: " << level << " value: " << data;
+    if(right) right->wypisz(level+1);
 }

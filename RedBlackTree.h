@@ -3,34 +3,35 @@
 class RedBlack {
 public:
     RedBlack(int value, bool isRoot = false);
-    ~RedBlack(void);
+    ~RedBlack();
     RedBlack* insert(RedBlack*);
-    RedBlack* rotateRight(void);
-    RedBlack* rotateLeft(void);
+    RedBlack* rotateRight();
+    RedBlack* rotateLeft();
+    void wypisz(int level);
 
     /*
         Do not bother with this code
     */
-    static RedBlack* genTest1(void);
-    static RedBlack* genTest2(void);
-    static RedBlack* genTest3(void);
-    static RedBlack* genTest4(void);
-    static RedBlack* genTest5(void);
-    static RedBlack* genTest6(void);
-    static RedBlack* genTest7(void);
-    static RedBlack* genTest8(void);
-    static RedBlack* genTest9(void);
+    static RedBlack* genTest1();
+    static RedBlack* genTest2();
+    static RedBlack* genTest3();
+    static RedBlack* genTest4();
+    static RedBlack* genTest5();
+    static RedBlack* genTest6();
+    static RedBlack* genTest7();
+    static RedBlack* genTest8();
+    static RedBlack* genTest9();
 
-    static RedBlack* genCheck1(void);
-    static RedBlack* genCheck2(void);
-    static RedBlack* genCheck3(void);
-    static RedBlack* genCheck4(void);
-    static RedBlack* genCheck5(void);
-    static RedBlack* genCheck6(void);
-    static RedBlack* genCheck7(void);
-    static RedBlack* genCheck8(void);
-    static RedBlack* genCheck9(void);
-    static RedBlack* genCheck10(void);
+    static RedBlack* genCheck1();
+    static RedBlack* genCheck2();
+    static RedBlack* genCheck3();
+    static RedBlack* genCheck4();
+    static RedBlack* genCheck5();
+    static RedBlack* genCheck6();
+    static RedBlack* genCheck7();
+    static RedBlack* genCheck8();
+    static RedBlack* genCheck9();
+    static RedBlack* genCheck10();
 
     friend bool operator==(const RedBlack& one, const RedBlack& two) {
         if(one.color != two.color) return false;
@@ -49,8 +50,8 @@ public:
         return rightEq && leftEq;
     }
 
-    RedBlack*& rightRef(void) { return right; }
-    RedBlack*& leftRef(void) {return left; }
+    RedBlack*& rightRef() { return right; }
+    RedBlack*& leftRef() {return left; }
     /*
         Especially the "Ref" functions that truly abuse the concept of private data.
         Never call those functions, their only use is launching test functions.
