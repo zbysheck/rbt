@@ -1,4 +1,3 @@
-#include <iostream>
 #include "RedBlackTree.h"
 
 
@@ -28,12 +27,19 @@ RedBlack* RedBlack::insert(RedBlack* node) {
     if(left&&left->right&&!left->left&&left->color&& left->right->color) {
         left = left->rotateLeft();
         left->color=true;
-        //left = left->rotateRight();
+    }
+
+    if(right&&right->left&&!right->right&&right->color&& right->left->color) {
+        right = right->rotateRight();
+        right->color=true;
     }
 
     if(left&&left->left&&left->left->left&&left->left->color&& left->left->left->color) {
-        //left = left->rotateLeft();
         left = left->rotateRight();
+    }
+
+    if(right&&right->right&&right->right->right&&right->right->color&& right->right->right->color) {
+        right = right->rotateLeft();
     }
 
 
@@ -283,10 +289,4 @@ RedBlack* RedBlack::genCheck10() {
     root->left->right->color = false;
 
     return root;
-}
-
-void RedBlack::wypisz(int level) {
-    if(left) left->wypisz(level+1);
-    std::cout << "\nkolor: " << color << " level: " << level << " value: " << data;
-    if(right) right->wypisz(level+1);
 }

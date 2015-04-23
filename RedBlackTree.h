@@ -3,11 +3,10 @@
 class RedBlack {
 public:
     RedBlack(int value, bool isRoot = false);
-    ~RedBlack();
+    ~RedBlack(void);
     RedBlack* insert(RedBlack*);
-    RedBlack* rotateRight();
-    RedBlack* rotateLeft();
-    void wypisz(int level);
+    RedBlack* rotateRight(void);
+    RedBlack* rotateLeft(void);
 
     /*
         Do not bother with this code
